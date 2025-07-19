@@ -103,12 +103,10 @@ const Features = () => (
     <div className="container mx-auto px-3 md:px-10">
       <div className="px-5 py-32">
         <p className="font-circular-web text-lg text-blue-50">
-          Into the Metagame Layer
+          Join the quest at BMSCE ACM Student Chapter
         </p>
         <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          Immerse yourself in a rich and ever-expanding universe where a vibrant
-          array of products converge into an interconnected overlay experience
-          on your world.
+          where tech meets purpose. We're on a mission to spark innovation, grow leaders, and connect classrooms to real-world impact through learning, service, and collaboration.
         </p>
       </div>
 
