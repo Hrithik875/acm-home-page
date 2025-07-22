@@ -65,7 +65,7 @@ const Hero = () => {
   useGSAP(() => {
     gsap.set("#video-frame", {
       clipPath: "polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
-      borderRadius: "0% 0% 40% 10%",
+      borderRadius: "0% 0% 42% 15%",
     });
     gsap.from("#video-frame", {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
@@ -80,12 +80,12 @@ const Hero = () => {
     });
   });
 
-  const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
+  const getVideoSrc = (index) => `videos/hero-${index}.mov`;
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
-        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
+        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-black">
           {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
           <div className="three-body">
             <div className="three-body__dot"></div>
@@ -140,32 +140,34 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 !text-blue-75 font-medium">
-          STUDENT CH<b>A</b>PTER
+        <h1 className="special-font hero-heading lg:hero-heading absolute pt-[160px] md:pt-[13rem] left-5 lg:top-auto lg:left-auto lg:bottom-5 lg:right-5 z-40 !text-blue-100  font-medium">
+          STUDENT CHAPTER
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
-          <div className="mt-24 px-5 sm:px-10">
+          <div className="mt-24 px-5 lg:px-10">
             <h1 className="special-font hero-heading text-blue-100">
-              bmsce <b>a</b>cm
+              BMSCE ACM
             </h1>
+            <div className="pt-20 md:pt-28 lg:pt-0">
+              <p className="mb-5 max-w-64 font-robert-regular text-blue-100 ">
+                Innovating the Future Through <br />Technology & Community
+              </p>
 
-            <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Innovating the Future Through <br />Technology & Community 
-            </p>
+              <Button
+                id="join-us"
+                title="Join Us"
+                leftIcon={<TiLocationArrow />}
+                containerClass="bg-yellow-300 flex-center gap-1"
+              />
+            </div>
 
-            <Button
-              id="join-us"
-              title="Join Us"
-              leftIcon={<TiLocationArrow />}
-              containerClass="bg-yellow-300 flex-center gap-1"
-            />
           </div>
         </div>
       </div>
-
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-        STUDENT CH<b>A</b>PTER
+      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black font-medium hidden lg:block"
+        style={{ right: '1.5rem' }}>
+        STUDENT CHAPTER
       </h1>
     </div>
   );

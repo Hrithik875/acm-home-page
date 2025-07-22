@@ -34,7 +34,7 @@ const About = () => {
         </p>
 
         <AnimatedTitle
-          title="Tr<b>a</b>nsforming P<b>a</b>ssion <br /> into Progress"
+          title="Transforming Passion <br /> into Progress"
           containerClass="mt-5 !text-black text-center"
         />
 
@@ -47,12 +47,12 @@ const About = () => {
         </div>
       </div>
 
-      <div className="h-dvh w-screen" id="clip">
-        <div className="mask-clip-path about-image">
+      <div className="h-screen w-screen" id="clip">
+        <div className="mask-clip-path about-image ">
           <img
             src="img/about.webp"
             alt="Background"
-            className="absolute left-0 top-0 size-full object-cover"
+            className="absolute left-0 top-0 size-full object-cover "
           />
         </div>
       </div>

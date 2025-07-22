@@ -21,7 +21,7 @@ export const VideoPreview = ({ children }) => {
         y: yOffset,
         rotationY: xOffset / 2, // Add 3D rotation effect
         rotationX: -yOffset / 2,
-        transformPerspective: 500, // Perspective for realistic 3D effect
+        transformPerspective: 900, // Perspective for realistic 3D effect
         duration: 1,
         ease: "power1.out",
       });

@@ -13,7 +13,7 @@ const AnimatedTitle = ({ title, containerClass }) => {
       const titleAnimation = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "100 bottom",
+          start: "150 bottom",
           end: "center bottom",
           toggleActions: "play none none reverse",
         },
@@ -39,7 +39,7 @@ const AnimatedTitle = ({ title, containerClass }) => {
       {title.split("<br />").map((line, index) => (
         <div
           key={index}
-          className="flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3"
+          className="flex-center max-w-full flex-wrap gap-2 px-10 lg:gap-3"
         >
           {line.split(" ").map((word, idx) => (
             <span

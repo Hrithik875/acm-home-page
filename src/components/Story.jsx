@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Button from "./Button";
 import AnimatedTitle from "./AnimatedTitle";
 
+
 const FloatingImage = () => {
   const frameRef = useRef(null);
 
@@ -27,7 +28,7 @@ const FloatingImage = () => {
       duration: 0.3,
       rotateX,
       rotateY,
-      transformPerspective: 500,
+      transformPerspective: 600,
       ease: "power1.inOut",
     });
   };
@@ -48,17 +49,16 @@ const FloatingImage = () => {
   return (
     <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
       <div className="flex size-full flex-col items-center py-10 pb-24">
-        <p className="font-general text-sm uppercase md:text-[10px]">
-          the multiversal ip world
-        </p>
+
 
         <div className="relative size-full">
           <AnimatedTitle
-            title="the st<b>o</b>ry of <br /> a hidden real<b>m</b>"
-            containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
+            title="emerging chapter<br />award-2024"
+            containerClass="mt-[200px] pointer-events-none mix-blend-difference relative z-10"
           />
 
-          <div className="story-img-container">
+
+          <div className="story-img-container ">
             <div className="story-img-mask">
               <div className="story-img-content">
                 <img
@@ -69,7 +69,7 @@ const FloatingImage = () => {
                   onMouseEnter={handleMouseLeave}
                   src="/img/entrance.webp"
                   alt="entrance.webp"
-                  className="object-contain"
+                  className="object-contain w-[90vw] "
                 />
               </div>
             </div>
@@ -103,21 +103,20 @@ const FloatingImage = () => {
           </div>
         </div>
 
-        <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
-          <div className="flex h-full w-fit flex-col items-center md:items-start">
-            <p className="mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start">
-              Where realms converge, lies Zentry and the boundless pillar.
-              Discover its secrets and shape your fate amidst infinite
-              opportunities.
+        <div className="flex w-full justify-center md:justify-center lg:justify-end mt-[-18rem] md:mt-[-18rem] lg:mt-[-24rem] lg:me-44">
+          <div className="flex h-full w-fit flex-col items-center text-center md:items-center md:text-center lg:items-start lg:text-left">
+            <p className="mt-1 max-w-xs text-sm font-circular-web text-violet-50 sm:max-w-sm sm:text-base md:max-w-md lg:max-w-sm">
+              BMSCE ACM Student Chapter received the Emerging Chapter Award 2024 at the ACM India Annual Event 2025, presented by ACM President Yannis Ioannidis and Jury Chair Mini Ulanat.
             </p>
 
             <Button
               id="realm-btn"
-              title="discover prologue"
+              title="discover more"
               containerClass="mt-5"
             />
           </div>
         </div>
+
       </div>
     </div>
   );

@@ -1,5 +1,9 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import ScrollFloat from "./ScrollFloat";
+import BlurText from "./BlurText";
+import AnimatedTitle from "./AnimatedTitle";
+
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -57,13 +61,13 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
   const handleMouseLeave = () => setHoverOpacity(0);
 
   return (
-    <div className="relative size-full">
+    <div className="relative w-full h-full">
       <video
         src={src}
         loop
         muted
         autoPlay
-        className="absolute left-0 top-0 size-full object-cover object-center"
+        className="absolute left-0 top-0 size-full object-cover object-center opacity-50"
       />
       <div className="relative z-10 flex size-full flex-col justify-between p-5 text-blue-50">
         <div>
@@ -100,72 +104,80 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 
 const Features = () => (
   <section className="bg-black pb-52">
-    <div className="container mx-auto px-3 md:px-10">
-      <div className="px-5 py-32">
-        <p className="font-circular-web text-lg text-blue-50">
-          Join the quest at BMSCE ACM Student Chapter
-        </p>
-        <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          where tech meets purpose. We're on a mission to spark innovation, grow leaders, and connect classrooms to real-world impact through learning, service, and collaboration.
-        </p>
-      </div>
-
-      <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
+    <div className="container mx-auto py-32 px-3 md:px-10 ">
+      <AnimatedTitle
+        title="our domains"
+        containerClass="mt-[200px] !text-white text-center"
+      />
+      <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md lg:h-[65vh] ">
         <BentoCard
-          src="videos/feature-1.mp4"
+          src="videos/hackathon.mov"
           title={
             <>
-              radia<b>n</b>t
+              TECHNICAL
             </>
           }
           description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
-          isComingSoon
+          
+          
         />
       </BentoTilt>
 
-      <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
-        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+      <div className="grid h-[135vh] w-full grid-cols-1 lg:grid-cols-2 grid-rows-4 gap-7">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 lg:row-span-2">
           <BentoCard
-            src="videos/feature-2.mp4"
+            src="videos/design.mov"
             title={
               <>
-                zig<b>m</b>a
+                Media and Design
               </>
             }
             description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
-            isComingSoon
+            
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 lg:row-span-2">
           <BentoCard
-            src="videos/feature-3.mp4"
+            src="videos/seminar.mov"
             title={
               <>
-                n<b>e</b>xus
+                Seminars and Workshops
               </>
             }
             description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
-            isComingSoon
+            
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 lg:row-span-2">
           <BentoCard
-            src="videos/feature-4.mp4"
+            src="videos/research.mov"
             title={
               <>
-                az<b>u</b>l
+                Research
               </>
             }
             description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
             isComingSoon
           />
         </BentoTilt>
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 lg:row-span-2">
+          <BentoCard
+            src="videos/event.mov"
+            title={
+              <>
+                Event Management
+              </>
+            }
+            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
+            
+          />
+        </BentoTilt>
 
-        <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-            <h1 className="bento-title special-font max-w-64 text-black">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:!col-span-full">
+          <div className="flex w-full size-full flex-col justify-between bg-blue-300 p-5">
+            <h1 className="bento-title special-font w-full text-black">
               M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
             </h1>
 
@@ -173,15 +185,8 @@ const Features = () => (
           </div>
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_2">
-          <video
-            src="videos/feature-5.mp4"
-            loop
-            muted
-            autoPlay
-            className="size-full object-cover object-center"
-          />
-        </BentoTilt>
+        
+
       </div>
     </div>
   </section>

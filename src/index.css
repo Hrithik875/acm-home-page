@@ -11,7 +11,7 @@ html {
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: #D6EFFF;
+  background-color: blue-75;
   font-family: "General Sans", sans-serif;
 }
 
@@ -43,7 +43,7 @@ body {
 
   /* bebas-neue-regular - latin */
   @font-face {
-    font-family:"bebas-neue";
+    font-family: "bebas-neue";
     src: url("/fonts/bebas-neue.woff2") format("woff2");
   }
 }
@@ -54,11 +54,11 @@ body {
   }
 
   .nav-hover-btn {
-    @apply relative ms-10 font-general text-xs uppercase text-blue-50 after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 dark:after:bg-white cursor-pointer;
+    @apply relative ms-10 font-general text-xs uppercase text-blue-50 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 dark:after:bg-white cursor-pointer;
   }
 
   .floating-nav {
-    @apply bg-black rounded-lg border;
+    @apply bg-black/60 backdrop-blur-md rounded-lg border;
   }
 
   .absolute-center {
@@ -74,18 +74,23 @@ body {
   }
 
   .special-font b {
-    font-family: "Zentry";
+    font-family: "bebas-neue";
     font-feature-settings: "ss01" on;
     font-weight: lighter;
     /* Change to desired weight (e.g., 300, 400, 500, 700) */
   }
 
   .hero-heading {
-    @apply uppercase font-zentry font-normal text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
+    @apply uppercase font-bebas-neue font-black text-6xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[9rem];
   }
 
+  .hero-heading-2 {
+    @apply uppercase font-bebas-neue font-black text-6xl sm:right-10 sm:text-5xl md:text-7xl lg:text-[7rem];
+  }
+
+
   .about-subtext {
-    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem];
+    @apply absolute bottom-[-85dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem];
   }
 
   .about-image {
@@ -93,11 +98,11 @@ body {
   }
 
   .animated-title {
-    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[6rem];
+    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[7rem] pb-[120px];
   }
 
   .animated-word {
-    @apply special-font font-zentry font-normal opacity-0;
+    @apply special-font font-bebas-neue font-black opacity-0;
     transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
     transform-origin: 50% 50% -150px !important;
     will-change: opacity, transform;
@@ -112,22 +117,31 @@ body {
   }
 
   .bento-title {
-    @apply uppercase md:text-6xl text-4xl font-normal font-zentry;
+    @apply uppercase md:text-6xl text-4xl font-normal font-bebas-neue;
+  }
+
+  .bento-title-dark {
+    @apply uppercase md:text-6xl text-black text-4xl font-normal font-bebas-neue;
   }
 
   .story-img-container {
-    @apply relative md:h-dvh h-[90vh] w-full;
+    @apply relative  h-[70vh] w-full lg:h-dvh;
     filter: url("#flt_tag");
   }
 
-  .story-img-mask {
-    @apply absolute left-0 top-0 size-full overflow-hidden md:left-[20%] md:top-[-10%] md:size-4/5;
-    clip-path: polygon(4% 0, 83% 21%, 100% 73%, 0% 100%);
+  @media(min-width: 1024px) {
+    .story-img-mask {
+      @apply absolute left-0 size-full overflow-hidden ;
+      clip-path: polygon(4% 0, 83% 21%, 100% 73%, 0% 100%);
+      @apply lg:left-[20%] lg:top-[-25%] lg:size-4/5;
+    }
   }
 
+
   .story-img-content {
-    @apply absolute w-full md:h-dvh h-[50dvh] opacity-100 left-10 top-16 md:left-0 md:top-10 lg:left-[-300px] lg:top-[-100px];
+    @apply absolute w-full h-[50dvh] opacity-100 left-[-20px] md:left-[-0px] pl-10 top-[-10%] ;
     transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
+    @apply lg:h-dvh lg:left-0 lg:top-10 xl:left-[-300px] xl:top-[-100px];
   }
 
   .gallery-img-container {
@@ -153,10 +167,16 @@ body {
   .contact-clip-path-2 {
     clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
   }
+
+  .font-bebas-neue {
+    font-family: "bebas-neue", sans-serif;
+  }
+
+
 }
 
 .indicator-line {
-  @apply h-1 w-px rounded-full bg-white transition-all duration-200 ease-in-out;
+  @apply h-2 w-px rounded-full bg-white transition-all duration-200 ease-in-out;
 }
 
 .indicator-line.active {
@@ -181,12 +201,13 @@ body {
   }
 }
 
+
 /* From Uiverse.io by G4b413l */
 /* https://uiverse.io/G4b413l/tidy-walrus-92 */
 .three-body {
   --uib-size: 35px;
   --uib-speed: 0.8s;
-  --uib-color: #5d3fd3;
+  --uib-color: #3fabd3;
   position: relative;
   display: inline-block;
   height: var(--uib-size);
@@ -285,4 +306,67 @@ body {
     transform: translateY(66%) scale(0.65);
     opacity: 0.8;
   }
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.6s ease-out forwards;
+}
+
+.animate-delay-0 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-4 {
+  animation-delay: 0.5s;
+}
+
+.scroll-float {
+  overflow: hidden;
+}
+
+/* .scroll-float-text {
+  display: inline-block;
+  font-size: clamp(1.6rem, 8vw, 10rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.5;
+} */
+
+.char {
+  display: inline-block;
+}
+
+.card-3d {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-3d:hover {
+  transform: scale(0.97) rotateX(5deg) rotateY(-5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
