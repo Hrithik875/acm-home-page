@@ -14,6 +14,8 @@ const NavBar = () => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showMenuItems, setShowMenuItems] = useState(false);
+  const [isUnmounting, setIsUnmounting] = useState(false); // 👈 New state
 
   const audioElementRef = useRef(null);
   const navContainerRef = useRef(null);
@@ -28,7 +30,22 @@ const NavBar = () => {
   };
 
   const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
+    if (isMenuOpen) {
+      // Closing: trigger exit animation
+      setIsUnmounting(true);
+      document.body.style.overflow = "";
+
+      setTimeout(() => {
+        setShowMenuItems(false);
+        setIsMenuOpen(false);
+        setIsUnmounting(false);
+      }, 600); // 🔧 delay to wait for fall animation to finish (match animation duration)
+    } else {
+      // Opening
+      setShowMenuItems(true);
+      setIsMenuOpen(true);
+      document.body.style.overflow = "hidden";
+    }
   };
 
   useEffect(() => {
@@ -69,30 +86,21 @@ const NavBar = () => {
       >
         <header className="absolute top-1/2 w-full -translate-y-1/2">
           <nav className="flex size-full items-center justify-between p-4">
-            {/* Logo + Explore */}
             <div className="flex items-center gap-7">
               <img src="/img/logo.png" alt="logo" className="w-[5rem]" />
-              {/* <Button
-                id="explore-button"
-                title="Explore"
-                rightIcon={<TiLocationArrow />}
-                containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-              /> */}
             </div>
 
-            {/* Desktop Nav */}
             <div className="hidden md:flex h-full items-center gap-8">
               {navItems.map((item, index) => (
                 <a
                   key={index}
                   href={`#${item.toLowerCase()}`}
-                  className="nav-hover-btn text-xl lg:text-[1rem] font-bold  "
+                  className="nav-hover-btn text-xl lg:text-[1rem] font-bold"
                 >
                   {item}
                 </a>
               ))}
 
-              {/* Audio Button (desktop only) */}
               <button
                 onClick={toggleAudioIndicator}
                 className="ml-10 flex items-center space-x-0.5"
@@ -117,51 +125,61 @@ const NavBar = () => {
               </button>
             </div>
 
-            {/* Hamburger (mobile only, inside navbar) */}
             <button
               onClick={toggleMenu}
               className="md:hidden text-blue-50"
             >
-              {isMenuOpen ? <IoMdClose size={30} className="text-white" /> : <GiHamburgerMenu size={30} />}
+              {isMenuOpen ? (
+                <IoMdClose size={30} className="text-white" />
+              ) : (
+                <GiHamburgerMenu size={30} />
+              )}
             </button>
           </nav>
         </header>
       </div>
 
-      {/* Full-screen Mobile Menu */}
+      {/* Slide-in Mobile Menu */}
       <div
         className={clsx(
-          "fixed inset-0 z-[999] flex flex-col justify-between bg-black text-white px-10 py-20 transition-all duration-500",
-          { hidden: !isMenuOpen }
+          "fixed top-0 right-0 z-[999] h-screen w-full bg-black text-white px-10 py-20 transform transition-transform duration-500 ease-in-out md:hidden",
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
-        style={{ minHeight: "100dvh" }}
       >
-        {/* Close (X) Icon */}
         <button
           onClick={toggleMenu}
-          className="absolute top-8 right-3 text-white md:hidden z-[1001]"
+          className="absolute top-8 right-3 text-white z-[1001]"
           aria-label="Close menu"
         >
           <IoMdClose size={36} />
         </button>
 
-        <ul className="flex flex-col items-center space-y-10 mt-10">
-          {navItems.map((item, index) => (
-            <li
-              key={index}
-              className={clsx(
-                "text-4xl font-bold text-blue-50 animate-rise opacity-0",
-                `animate-delay-${index}`
-              )}
-            >
-              <a href={`#${item.toLowerCase()}`} onClick={toggleMenu}>
-                {item}
-              </a>
-            </li>
-          ))}
-        </ul>
+        {(showMenuItems || isUnmounting) && (
+          <ul className="flex flex-col items-center space-y-10 mt-16">
+            {navItems.map((item, index) => (
+              <li
+                key={index}
+                className={clsx(
+                  "text-5xl font-bold text-blue-50 transition-opacity duration-500",
+                  {
+                    "opacity-100 animate-rise": showMenuItems && !isUnmounting,
+                    "opacity-0 animate-fall": isUnmounting,
+                  }
+                )}
+                style={{
+                  animationDelay: `${0.1 * index + 0.3}s`,
+                  animationFillMode: "both",
+                }}
+              >
+                <a href={`#${item.toLowerCase()}`} onClick={toggleMenu}>
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
 
-        <div className="flex items-center justify-between w-full mt-10">
+        <div className="absolute bottom-32 left-0 right-0 px-10 flex items-center justify-between w-full">
           <p className="text-sm text-blue-50">BMSCE ACM STUDENT CHAPTER</p>
           <button onClick={toggleAudioIndicator} className="flex items-center space-x-1">
             <audio

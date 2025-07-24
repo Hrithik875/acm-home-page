@@ -117,13 +117,13 @@ const Features = () => (
               TECHNICAL
             </>
           }
-          description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
+          description="Promoting innovation through coding, projects, and hackathon participation."
           
           
         />
       </BentoTilt>
 
-      <div className="grid h-[135vh] w-full grid-cols-1 lg:grid-cols-2 grid-rows-4 gap-7">
+      <div className="grid h-[135vh] w-full grid-cols-1 lg:grid-cols-2 grid-rows-6 gap-7">
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 lg:row-span-2">
           <BentoCard
             src="videos/design.mov"
@@ -132,7 +132,7 @@ const Features = () => (
                 Media and Design
               </>
             }
-            description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
+            description="Showcasing our work through creative visuals, content, and design."
             
           />
         </BentoTilt>
@@ -145,7 +145,7 @@ const Features = () => (
                 Seminars and Workshops
               </>
             }
-            description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
+            description="Hosting expert talks and hands-on learning sessions."
             
           />
         </BentoTilt>
@@ -158,7 +158,7 @@ const Features = () => (
                 Research
               </>
             }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
+            description="Exploring AI, ML, and emerging tech through research and publications."
             isComingSoon
           />
         </BentoTilt>
@@ -170,12 +170,24 @@ const Features = () => (
                 Event Management
               </>
             }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
+            description="Planning and executing events with seamless coordination."
+            
+          />
+        </BentoTilt>
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 lg:row-span-2 ">
+          <BentoCard
+            src="videos/community.mov"
+            title={
+              <>
+                Community Service
+              </>
+            }
+            description="Driving impact through outreach, education, and social initiatives."
             
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 md:!col-span-full">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 lg:row-span-2">
           <div className="flex w-full size-full flex-col justify-between bg-blue-300 p-5">
             <h1 className="bento-title special-font w-full text-black">
               M<b>o</b>re co<b>m</b>ing s<b>o</b>on.

@@ -12,6 +12,7 @@
   "dependencies": {
     "@gsap/react": "^2.1.1",
     "@studio-freight/lenis": "^1.0.42",
+    "canvas-confetti": "^1.9.3",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.6",
     "gsap": "^3.12.5",

@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Button from "./Button";
 import AnimatedTitle from "./AnimatedTitle";
 
+import { ConfettiSideCannons } from "./ConfettiSideCannons"; // <-- Add this line
 
 const FloatingImage = () => {
   const frameRef = useRef(null);
@@ -48,6 +49,7 @@ const FloatingImage = () => {
 
   return (
     <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
+      
       <div className="flex size-full flex-col items-center py-10 pb-24">
 
 
@@ -103,17 +105,14 @@ const FloatingImage = () => {
           </div>
         </div>
 
-        <div className="flex w-full justify-center md:justify-center lg:justify-end mt-[-18rem] md:mt-[-18rem] lg:mt-[-24rem] lg:me-44">
-          <div className="flex h-full w-fit flex-col items-center text-center md:items-center md:text-center lg:items-start lg:text-left">
-            <p className="mt-1 max-w-xs text-sm font-circular-web text-violet-50 sm:max-w-sm sm:text-base md:max-w-md lg:max-w-sm">
+        <div className="flex w-full justify-center md:justify-center  mt-[-18rem] md:mt-[-18rem] lg:mt-[-30rem] ">
+          <div className="flex h-full w-fit flex-col items-center text-center md:items-center md:text-center ">
+            <p className="mt-1 max-w-xs text-sm font-circular-web text-violet-50 sm:max-w-sm sm:text-base md:max-w-md lg:max-w-2xl">
               BMSCE ACM Student Chapter received the Emerging Chapter Award 2024 at the ACM India Annual Event 2025, presented by ACM President Yannis Ioannidis and Jury Chair Mini Ulanat.
             </p>
+            <ConfettiSideCannons />
 
-            <Button
-              id="realm-btn"
-              title="discover more"
-              containerClass="mt-5"
-            />
+
           </div>
         </div>
 
